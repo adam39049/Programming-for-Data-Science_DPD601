@@ -1,5 +1,3 @@
-# src/analysis.py
-# القسم 3 — NumPy + EDA         → analysis.py
 
 
 import numpy as np

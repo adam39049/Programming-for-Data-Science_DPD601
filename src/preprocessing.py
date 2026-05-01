@@ -1,6 +1,3 @@
-# src/preprocessing.py
-# القسم 2 — تنظيف البيانات      → preprocessing.py
-
 
 import pandas as pd
 

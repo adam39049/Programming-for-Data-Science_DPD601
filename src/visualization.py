@@ -1,7 +1,3 @@
-# القسم 4 — الرسوم البيانية     → visualization.py
-
-# src/visualization.py
-
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -64,8 +60,10 @@ def plot_admission_grade_boxplot(df):
         data=df,
         x="Target",
         y="Admission grade",
+        hue="Target",
         order=["Dropout", "Enrolled", "Graduate"],
-        palette=["#e74c3c", "#f39c12", "#27ae60"]
+        palette=["#e74c3c", "#f39c12", "#27ae60"],
+        legend=False
     )
     plt.title("Admission Grade Distribution by Academic Status")
     plt.xlabel("Academic Status")
@@ -127,9 +125,18 @@ def plot_correlation_heatmap(df):
 
 
 def generate_all_visualizations(df):
-    plot_target_distribution(df)
-    plot_avg_admission_grade(df)
-    plot_age_distribution(df)
-    plot_admission_grade_boxplot(df)
-    plot_semester_grades_scatter(df)
-    plot_correlation_heatmap(df)
+    visualizations = [
+        ("01 - Target Distribution", lambda: plot_target_distribution(df)),
+        ("02 - Avg Admission Grade", lambda: plot_avg_admission_grade(df)),
+        ("03 - Age Distribution", lambda: plot_age_distribution(df)),
+        ("04 - Admission Grade Boxplot", lambda: plot_admission_grade_boxplot(df)),
+        ("05 - Semester Grades Scatter", lambda: plot_semester_grades_scatter(df)),
+        ("06 - Correlation Heatmap", lambda: plot_correlation_heatmap(df)),
+    ]
+
+    for name, func in visualizations:
+        try:
+            func()
+            print(f"[OK] {name}")
+        except Exception as e:
+            print(f"[ERROR] {name} - {e}")

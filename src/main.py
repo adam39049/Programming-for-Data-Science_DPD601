@@ -10,36 +10,39 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 
-# ========================================
 # 1. Load Dataset
-# ========================================
+
 file_path = "data/raw/dataset.csv"
 df = load_dataset(file_path)
 display_info(df)
+print("_" * 50)
 
-# ========================================
 # 2. Data Cleaning
-# ========================================
+
 df = clean_dataset(df)
+print("_" * 50)
 
-# ========================================
+
 # 3. NumPy Analysis
-# ========================================
+
 numpy_analysis(df)
+print("_" * 50)
 
-# ========================================
+
 # 4. EDA Analysis
-# ========================================
+
 eda_analysis(df)
+print("_" * 50)
 
-# ========================================
+
 # 5. Visualization
-# ========================================
-generate_all_visualizations(df)
 
-# ========================================
+generate_all_visualizations(df)
+print("_" * 50)
+
+
 # 6. Machine Learning
-# ========================================
+
 
 # Prepare data
 X, y = prepare_data(df)
@@ -56,7 +59,7 @@ dt_accuracy = evaluate_model(dt_model, X_test, y_test, "Decision Tree")
 rf_accuracy = evaluate_model(rf_model, X_test, y_test, "Random Forest")
 
 # Compare models
-print("\n── Model Comparison ──")
+print("\n== Model Comparison ==")
 print(f"Decision Tree accuracy : {dt_accuracy:.4f}")
 print(f"Random Forest accuracy : {rf_accuracy:.4f}")
 
@@ -64,3 +67,5 @@ if rf_accuracy > dt_accuracy:
     print("Best model: Random Forest")
 else:
     print("Best model: Decision Tree")
+
+print("_" * 50)
