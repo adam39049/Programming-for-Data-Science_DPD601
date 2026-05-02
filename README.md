@@ -1,59 +1,86 @@
-# 📊 Programming for Data Science — DPD601
 
-> A data analysis project developed as part of the DPD601 course.
-
----
-
-## 👤 Student Information
-
-| Field        | Details             |
-|--------------|---------------------|
-| **Name**     | Adam                |
-| **ID**       | 192566              |
-| **Course**   | Programming for Data Science — DPD601 |
+## Student Information
+- **Name:** Adam
+- **ID:** 192566
+- **Course:** DPD601 — Programming for Data Science
+- **Instructor:** Dr. Doaa Kordab
 
 ---
 
-## 📌 Project Overview
-
-This project focuses on **exploratory data analysis (EDA)** and deriving meaningful insights from real-world datasets. It covers data cleaning, visualization, and applying basic machine learning techniques using Python and its core data science libraries.
-
----
-
-## 🛠️ Tools & Technologies
-
-![Python](https://img.shields.io/badge/Python-3.x-blue?logo=python)
-![Pandas](https://img.shields.io/badge/Pandas-NumPy-lightgrey?logo=pandas)
-![Matplotlib](https://img.shields.io/badge/Matplotlib-Seaborn-orange)
-![Scikit-learn](https://img.shields.io/badge/Scikit--learn-ML-green?logo=scikit-learn)
-
-- **Python 3.x** — Core programming language
-- **Pandas / NumPy** — Data manipulation and numerical computing
-- **Matplotlib / Seaborn** — Data visualization
-- **Scikit-learn** — Machine learning models and preprocessing
+## Project Title
+Academic Performance Analysis and Early Prediction of Student Dropout
 
 ---
 
-## 📁 Project Structure
+## Project Description
+This project analyzes a real academic dataset of 4,424 students to understand
+the factors that lead to dropout, continued enrollment, or graduation.
+It applies data preprocessing, exploratory data analysis, data visualization,
+and machine learning classification models to predict student academic status.
 
-```
-Programming-for-Data-Science_DPD601/
-│
+---
+
+## Libraries and Tools Used
+|     Library  |                 Purpose                  |
+|--------------|------------------------------------------|
+| Python       | Core programming language                |
+| NumPy        | Numerical operations and logical masking |
+| Pandas       | Data loading, cleaning, and analysis     |
+| Matplotlib   | Data visualization                       |
+| Seaborn      | Statistical visualizations               |
+| Scikit-Learn | Machine learning models                  |
+
+---
+
+## Project Structure
+
+project/
 ├── data/
-│   └── dataset.csv          # Raw dataset used for analysis
-│
-├── notebooks/
-│   └── analysis.ipynb       # Main Jupyter/Python notebook
-│
+│   ├── raw/
+│   │   └── dataset.csv
+│   └── processed/
+│       └── processed_dataset.csv
+├── src/
+│   ├── main.py
+│   ├── data_loader.py
+│   ├── preprocessing.py
+│   ├── analysis.py
+│   ├── visualization.py
+│   ├── modeling.py
+│   └── evaluation.py
 ├── outputs/
-│   └── figures/             # Generated plots and charts
-│
-└── README.md                # Project documentation
-```
+│   ├── figures/
+│   ├── tables/
+│   └── models/
+├── report/
+│   └── final_report.docx
+└── README.md
 
 ---
 
-## ▶️ How to Run
+## Steps to Run the Project
+1. Install required libraries:
+```bash
+pip install numpy pandas matplotlib seaborn scikit-learn
+```
+
+2. Make sure the dataset is in place:
+
+data/raw/dataset.csv
+
+3. Run the main file from the project root:
+```bash
+   python src/main.py
+```
+
+4. Outputs will be saved in:
+- `outputs/figures/` — All visualizations
+- `outputs/models/`  — Saved trained models
+- `outputs/tables/`  — Model comparison table
+- `data/processed/`  — Cleaned dataset
+
+---
+## Github
 
 1. **Clone the repository:**
    ```bash
@@ -66,17 +93,19 @@ Programming-for-Data-Science_DPD601/
    pip install pandas numpy matplotlib seaborn scikit-learn
    ```
 
-3. **Run the analysis:**
-   ```bash
-   python notebooks/analysis.ipynb
-   ```
-   Or open it in Jupyter Notebook:
-   ```bash
-   jupyter notebook notebooks/analysis.ipynb
-   ```
+3. **Run the main file from the project root:**
+```bash
+   python src/main.py
+```
+   
 
----
-
-## 📄 License
-
-This project is submitted for academic purposes as part of the DPD601 course.
+## Project Files Description
+| File               |         Description                    |
+|--------------------|----------------------------------------|
+| `main.py`          | Entry point — runs the full pipeline   |
+| `data_loader.py`   | Loads and displays dataset information |
+| `preprocessing.py` | Cleans data and handles missing values |
+| `analysis.py`      | NumPy operations and Pandas EDA        |
+| `visualization.py` | Generates all 6 visualizations         |
+| `modeling.py`      | Trains and evaluates ML models         |
+| `evaluation.py`    | Compares models and saves results      |

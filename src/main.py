@@ -1,13 +1,21 @@
-# src/main.py
-
-from modeling import prepare_data, split_data, train_decision_tree, train_random_forest, evaluate_model
-from visualization import generate_all_visualizations
-from analysis import numpy_analysis, eda_analysis
-from preprocessing import clean_dataset
-from data_loader import load_dataset, display_info
-import sys
 import os
+import sys
+
+# This must run before importing local modules
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+import joblib  # noqa: E402
+import pandas as pd  # noqa: E402
+
+
+from analysis import eda_analysis, numpy_analysis  # noqa: E402
+from data_loader import display_info, load_dataset  # noqa: E402
+from modeling import (evaluate_model, prepare_data,  # noqa: E402
+                      split_data, train_decision_tree,
+                      train_random_forest)
+from preprocessing import clean_dataset  # noqa: E402
+from visualization import generate_all_visualizations  # noqa: E402
+from evaluation import compare_and_save  # noqa: E402
 
 
 # 1. Load Dataset
@@ -42,30 +50,13 @@ print("_" * 50)
 
 
 # 6. Machine Learning
-
-
-# Prepare data
 X, y = prepare_data(df)
-
-# Split data
 X_train, X_test, y_train, y_test = split_data(X, y)
-
-# Train models
 dt_model = train_decision_tree(X_train, y_train)
 rf_model = train_random_forest(X_train, y_train)
-
-# Evaluate models
 dt_accuracy = evaluate_model(dt_model, X_test, y_test, "Decision Tree")
 rf_accuracy = evaluate_model(rf_model, X_test, y_test, "Random Forest")
-
-# Compare models
-print("\n== Model Comparison ==")
-print(f"Decision Tree accuracy : {dt_accuracy:.4f}")
-print(f"Random Forest accuracy : {rf_accuracy:.4f}")
-
-if rf_accuracy > dt_accuracy:
-    print("Best model: Random Forest")
-else:
-    print("Best model: Decision Tree")
-
 print("_" * 50)
+
+# 7. Compare and Save
+compare_and_save(dt_model, rf_model, dt_accuracy, rf_accuracy)
